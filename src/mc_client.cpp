@@ -109,6 +109,17 @@ void McClient::handle()
             Serial.print("Username: ");
             Serial.println(username);
 
+            uint64_t uuid1 = 0;
+            uint64_t uuid2 = 0;
+
+            memcpy(&uuid1, &packet.data[name_index + name_length], sizeof(uuid1));
+            memcpy(&uuid2, &packet.data[name_index + name_length + sizeof(uuid1)], sizeof(uuid2));
+
+            Serial.print("UUID: ");
+            Serial.print(uuid1);
+            Serial.print(" ");
+            Serial.println(uuid2);
+
             break;
         }
     }
